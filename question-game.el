@@ -48,3 +48,4 @@
 
 ;;;;jacke
 ;;;;queen
+;;;;king
