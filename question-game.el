@@ -46,6 +46,7 @@
 	   (setq QUESTION-ERROR (+ 1 QUESTION-ERROR))
 	   (insert (format "%s" QUESTION-RANDOM-RESPONSE)))))
 
-;;;;jacke
-;;;;queen
-;;;;king
+;;;;diamonds
+;;;;hearts
+;;;;clubs
+;;;;dolores
