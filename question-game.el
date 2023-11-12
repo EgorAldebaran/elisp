@@ -1,7 +1,15 @@
 ;;;;прога задает любые вопросы из источника памяти и ожидает правильные ответы
 (setq QUESTION-SUCCESSFULLY 0)
 (setq QUESTION-ERROR 0)
-(setq PATH-DESTINATION "memory-beta")
+
+(defun question-name-set-memory ()
+  (let ((choice-memory (read-string "memory set\n (p) - for memory-php,\n (e) - for memory-english\n")))
+    (cond ((equal choice-memory "p")
+	   (setq PATH-DESTINATION "memory-php"))
+	  ((equal choice-memory "e")
+	   (setq PATH-DESTINATION "memory-beta"))
+	  (t print (format "error choice correct memory")))))
+(question-name-set-memory)
 
 (defun remember-question () "вспоминает вопрос из источника вопросов"
 	 (with-temp-buffer
