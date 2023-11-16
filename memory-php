@@ -1,6 +1,11 @@
 (
- ("Задача заключается в удвоении каждого элемента массива. Результат выполнения функции array_walk будет таким: $sys = [1, 2, 3];" . "array_walk($sys, function (&$value, $key) { $value *= 2;});")
+ ("Задача заключается в удвоении каждого элемента массива. Результат выполнения функции array_walk будет таким: $sys = [1, 2, 3];" . "$info = array_walk($sys, function (&$value, $key) { $value *= 2;});")
  ("Сделай фильтрацию только четных чисел из массива $sys = [1, 2, 3, 4, 5, 6, 7]" . "$info = array_filter($sys, function ($element) { return $element % 2 == 0;});")
  ("Удали пустые значения из массива $sys = ['jacke', 'queen', '', 'dolly']" . "$info = array_filter($sys);")
  ("Напиши функцию checkKey, которая принимает два параметра: массив($sys) и ключ($key). Внутри функции проверьте существование элемента с заданным ключом в массиве с помощью функции isset. Если элемент существует, выведите его значение, если нет - выведите сообщение об ошибке - key not found." . "function checkKey($sys, $key) { echo isset($sys[$key]) ? $sys[$key] : 'key not found';}")
+ ("Напиши функцию sumAll($el0, $el1), которая принимает каждый элемент массива чисел $sys и с помощью array_reduce находит сумму всех элементов этого массива." . "function sumAll($el0, $el1) { return $el0 + $el1;}; $info = array_reduce($sys, function ($el0, $el1) { return sumAll($el0, $el1);},0);")
+ ("Напиши функцию высшего порядка createMultiplier c параметром $factor которая возвращает анонимную функцию, умножающую переданное число на заданный множитель. Затем используй эту функцию для создания функции, которая умножит на 10, и вызови эту функцию со значением 5." . "function createMultiplier($factor) { return function ($number) use ($factor) { return $number * $factor;};} $look = createMultiplier(10); $info = $look(5);")
+ ("Есть некий массив $sys. Там через запятую перечисляются строки. Сделай из этого массива - одну строку. Потом из этой строки снова массив" . "$look = implode(', ', $sys); $info = explode(', ', $look);")
+ ("SELECT * FROM Product p INNER JOIN ProductType pt ON p.product_type=pt.id WHERE pt.id='ACCOUNT'" . "$qm->select('p)->from(Product::class, 'p')->innerJoin(ProductType::class, 'pt', 'WITH', 'p.product_type=pt.id')->where($qm->expr()->eq('pt.id', ':product_type'))->setParameter('product_type', ProductType::ACCOUNT);")
+ ("напиши пузырьковую сортировку для массива $sys" . "for ($i = 0; $i < count($sys); $i++) { for ($l = 0; $l < count($sys)-1; $l++) { if ($sys[$l] > $sys[$l+1]) { $temp = $sys[$l+1]; $sys[$l+1] = $sys[$l]; $sys[$l] = $temp;}}}")
 )

@@ -2,15 +2,6 @@
 (setq QUESTION-SUCCESSFULLY 0)
 (setq QUESTION-ERROR 0)
 
-(defun question-name-set-memory ()
-  (let ((choice-memory (read-string "memory set\n (p) - for memory-php,\n (e) - for memory-english\n")))
-    (cond ((equal choice-memory "p")
-	   (setq PATH-DESTINATION "memory-php"))
-	  ((equal choice-memory "e")
-	   (setq PATH-DESTINATION "memory-beta"))
-	  (t print (format "error choice correct memory")))))
-(question-name-set-memory)
-
 (defun remember-question () "вспоминает вопрос из источника вопросов"
 	 (with-temp-buffer
 	   (insert-file-contents PATH-DESTINATION)
@@ -46,7 +37,18 @@
 	   (setq QUESTION-ERROR (+ 1 QUESTION-ERROR))
 	   (insert (format "%s" QUESTION-RANDOM-RESPONSE)))))
 
-;;;;diamonds
-;;;;hearts
-;;;;clubs
-;;;;dolores
+
+;;;задача - прикрутить трансиент
+(transient-define-prefix question-game-transient ()
+  "Prefix that is minimal and uses an anonymous command suffix."
+  [("e" "english"
+    (lambda ()
+      (interactive)
+      (setq PATH-DESTINATION "~/elisp/memory-beta")))
+   ("p" "php"
+    (lambda ()
+      (interactive)
+      (setq PATH-DESTINATION "~/elisp/memory-php")))])
+
+
+
