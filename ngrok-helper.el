@@ -1,5 +1,5 @@
-;;;;адаптер для работы с ngrok сфирами
-(defun ngrok-main () "адаптер для работы с ngrok сфирами"
+;;;;адаптер для работы с ngrok 
+(defun ngrok-main () "адаптер для работы с ngrok"
        ;;;;рестарт ngrok - либо старт если не запущен вообще
        (ngrok-restart)
        (ngrok))
@@ -8,7 +8,7 @@
 ;;;;прога для работы с ngrok буффером
 (defun ngrok () "если буффер был его уничтожает и показывает путь для ngrok в котором адрес"
        (cond ((get-buffer "*ngrok*")
-	      (print (format "Нашла такой буффер - уничтожаю его. Сделаю новый."))
+	      (print (format "Старый буффер уничтожен. Новый создан"))
 	      (kill-buffer "*ngrok*")
 	      (ngrok))
 	     (t
@@ -25,7 +25,7 @@
 		(kill-region (region-beginning) (region-end))
 		(buffer-string)
 		(elisp-reborn kill-ring))))
-       (print (format "%s - Только что создала ngrok process и буффер *ngrok*. Нажми c-y и увидешь адрес." (function-name))))
+       (print (format "%s - Только что выполнен ngrok process и буффер *ngrok*. Нажми c-y и увидешь адрес." (function-name))))
 
 ;;;;(ngrok)
 ;;;(elisp-reborn kill-ring)
@@ -33,12 +33,12 @@
 
 (defun ngrok-restart () "если ngrok запущен - убить его - а затем создать"
        (cond ((not (string-empty-p (shell-command-to-string "ps au | grep ngrok")))
-	      (print (format "ngrok мною уже был запущен. Буду убивать процесс."))
+	      (print (format "ngrok уже был запущен. Убить процесс."))
 	      (start-process "ngrok-kill" nil "pkill" "ngrok")
 	      (sleep-for 2)
 	      (ngrok-restart))
 	     ((string-empty-p (shell-command-to-string "ps au | grep ngrok"))
-	      (print (format "ngrok процесс убитый. Буду запускать процесс."))
+	      (print (format "ngrok процесс убитый. запустить новый процесс."))
 	      (start-process "ngrok-process" "*ngrok*" "ngrok" "http" "80"))
 	     (t (print (format "Возникли непредвиденные ошибки."))))
        (print (format "только что отработала функцию %s" (function-name))))
