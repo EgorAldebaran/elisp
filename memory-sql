@@ -1,4 +1,7 @@
 (
- ("Найди значения всех цен на акции msft за прошедшие два месяца.(от сентября 2023 год)" . "select * from msft where date between '2023-06-01' and '2023-09-01';")
- 
+ ("Найди значения всех цен на акции msft за прошедшие два месяца.(от 2023-06-01 до 2023-09-01)" . "select * from msft where date between '2023-06-01' and '2023-09-01';")
+ ("Найди всех работников чье имя содержит mit" . "select * from employee where lname like '%mi%';")
+ ("Найди всех работников фамилия которых начинается на F или на A" . "select * from employee where lname like 'F%' or lname like 'A%';")
+ ("С помощью регулярного выражения найди всех раотников фамилия которых начинается на A или на B" . "select * from employee where lname regexp '^[AB];")
+ ("Найди всех работников у которых sup NULL" . "select * from employee where sup is null;")
 )

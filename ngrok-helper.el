@@ -1,12 +1,14 @@
 ;;;;адаптер для работы с ngrok 
-(defun ngrok-main () "адаптер для работы с ngrok"
+(defun ngrok-main ()
+  "адаптер для работы с ngrok"
        ;;;;рестарт ngrok - либо старт если не запущен вообще
        (ngrok-restart)
        (ngrok))
 
 
 ;;;;прога для работы с ngrok буффером
-(defun ngrok () "если буффер был его уничтожает и показывает путь для ngrok в котором адрес"
+(defun ngrok ()
+  "если буффер был его уничтожает и показывает путь для ngrok в котором адрес"
        (cond ((get-buffer "*ngrok*")
 	      (print (format "Старый буффер уничтожен. Новый создан"))
 	      (kill-buffer "*ngrok*")
@@ -31,7 +33,8 @@
 ;;;(elisp-reborn kill-ring)
 ;;;http://127.0.0.1:4040
 
-(defun ngrok-restart () "если ngrok запущен - убить его - а затем создать"
+(defun ngrok-restart ()
+  "если ngrok запущен - убить его - а затем создать"
        (cond ((not (string-empty-p (shell-command-to-string "ps au | grep ngrok")))
 	      (print (format "ngrok уже был запущен. Убить процесс."))
 	      (start-process "ngrok-kill" nil "pkill" "ngrok")
@@ -50,14 +53,16 @@
 
 
 ;;;;;более чистая версия с рекурсией
-(defun elisp-reborn (kill-ring) "elisp-reborn"
+(defun elisp-reborn (kill-ring)
+  "elisp-reborn"
        (cond ((zerop (length kill-ring))
 	      (print '(Кольцо смерти опустело!)))
 	     (t (insert (format "%s" (replace-regexp-in-string " " "" (car kill-ring))))
 		(elisp-reborn (cdr kill-ring))))
        (print (format "только что отработала функцию %s" (function-name))))
 
-(defun lake-fire () "lake fire"
+(defun lake-fire ()
+  "lake fire"
        (setq kill-ring nil))
 
 ;;;(kill-region (region-beginning) (region-end))
