@@ -48,7 +48,25 @@
    ("p" "php"
     (lambda ()
       (interactive)
-      (setq PATH-DESTINATION "~/elisp/memory-php")))])
+      (setq PATH-DESTINATION "~/elisp/memory-php")))
+   ("s" "sql"
+    (lambda ()
+      (interactive)
+      (setq PATH-DESTINATION "~/elisp/memory-sql")))])
+
+
+;;; big question work this
+;;(defun Xjump-to-element (name)
+;;  (interactive (list last-input-event))
+;;  (bookmark-jump (char-to-string name)))
 
 
 
+
+Кого волнует что ты думаешь?
+Who gives a fuck what you think?
+Who gives a fuck what you think?
+
+Найди значения всех цен на акции msft за прошедшие два месяца.(от сентября 2023 год)
+select * from msft where date between '2023-06-01' and '2023-09-01';
+select * from msft where date between '2023-06-01' and '2023-09-01';
